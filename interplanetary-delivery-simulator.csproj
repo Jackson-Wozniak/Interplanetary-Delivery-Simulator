@@ -18,9 +18,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="src\company_management\" />
       <Folder Include="src\fleet_scheduling\" />
-      <Folder Include="src\planetary_resources\" />
     </ItemGroup>
 
 </Project>
