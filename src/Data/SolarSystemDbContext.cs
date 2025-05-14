@@ -9,10 +9,6 @@ public partial class LunarLogisticsDbContext
 
     partial void ConfigureSolarSystem(ModelBuilder builder)
     {
-        bool temp = false;
-        if (temp)
-        {
-            Console.WriteLine("Filler");
-        }
+        
     }
 }

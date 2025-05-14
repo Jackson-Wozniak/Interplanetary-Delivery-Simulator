@@ -6,9 +6,9 @@ namespace interplanetary_delivery_simulator.planetary_resources.Utils;
 
 public class CargoCategoryUtils
 {
-    public static CargoCategory CategoryFromType(CargoType type)
+    public static CargoCategory CategoryFromType(string type)
     {
-        switch (type.Name.ToUpper())
+        switch (type.ToUpper())
         {
             case "BUILDING TOOLS" : return CargoCategory.CONSTRUCTION;
             case "GLASS": return CargoCategory.CONSTRUCTION;

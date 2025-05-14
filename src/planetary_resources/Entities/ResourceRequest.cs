@@ -2,10 +2,10 @@
 
 public class ResourceRequest
 {
-    private long Id { get; set; }
-    private Planet Planet { get; set; }
-    private CargoType CargoType { get; set; }
-    private double PoundsOfCargo { get; set; }
+    public long Id { get; set; }
+    public Planet Planet { get; set; }
+    public CargoType CargoType { get; set; }
+    public double PoundsOfCargo { get; set; }
 
     public ResourceRequest(Planet planet, CargoType cargo, double pounds)
     {
