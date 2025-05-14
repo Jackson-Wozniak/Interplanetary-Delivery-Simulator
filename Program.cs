@@ -1,4 +1,4 @@
-using interplanetary_delivery_simulator;
+using interplanetary_delivery_simulator.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

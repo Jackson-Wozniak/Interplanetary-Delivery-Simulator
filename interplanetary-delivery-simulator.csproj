@@ -18,7 +18,10 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="App_Data\" />
       <Folder Include="src\fleet_scheduling\" />
+      <Folder Include="src\planetary_resources\Manager\" />
+      <Folder Include="src\planetary_resources\Service\" />
     </ItemGroup>
 
 </Project>
