@@ -1,4 +1,6 @@
 using interplanetary_delivery_simulator.Data;
+using interplanetary_delivery_simulator.planetary_resources.Configuration;
+using interplanetary_delivery_simulator.planetary_resources.Service;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +15,9 @@ builder.Services.AddDbContext<LunarLogisticsDbContext>(options =>
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddHostedService<PlanetConfiguration>();
+builder.Services.AddScoped<IPlanetService, PlanetService>();
 
 var app = builder.Build();
 

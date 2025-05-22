@@ -1,5 +1,6 @@
 ﻿using interplanetary_delivery_simulator.planetary_resources.Entities;
 using interplanetary_delivery_simulator.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace interplanetary_delivery_simulator.planetary_resources.Service;
 
@@ -17,10 +18,13 @@ public class PlanetService : IPlanetService
         using var transaction = _solarSystemDbContext.Database.BeginTransaction();
         try
         {
-            _solarSystemDbContext.Planets.RemoveRange(_solarSystemDbContext.Planets);
-            _solarSystemDbContext.SaveChanges();
-            _solarSystemDbContext.Planets.AddRange(planets);
-            _solarSystemDbContext.SaveChanges();
+            foreach (var planet in planets)
+            {
+                if (_solarSystemDbContext.Planets.Find(planet.Name) == null)
+                {
+                    _solarSystemDbContext.Planets.Add(planet);
+                }
+            }
             transaction.Commit();
         }
         catch (Exception)
@@ -29,14 +33,19 @@ public class PlanetService : IPlanetService
         }
     }
 
-    public Planet GetPlanet(string name)
+    public Planet FindPlanet(string name)
     {
         var planet = _solarSystemDbContext.Planets.Find(name);
         if (planet == null) throw new Exception();
         return planet;
     }
 
-    public long GetPlanetCount()
+    public Task<List<Planet>> FindAllPlanets()
+    {
+        return _solarSystemDbContext.Planets.ToListAsync();
+    }
+
+    public long FindPlanetCount()
     {
         return _solarSystemDbContext.Planets.Count();
     }

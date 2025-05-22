@@ -9,6 +9,17 @@ public partial class LunarLogisticsDbContext
 
     partial void ConfigureSolarSystem(ModelBuilder builder)
     {
-        
+        builder.Entity<Planet>(planet =>
+        {
+            planet.OwnsOne(p => p.Orbit, orbit =>
+            {
+                orbit.WithOwner();
+                orbit.HasOne(o => o.OrbitsAround)
+                    .WithMany()
+                    .HasForeignKey("OrbitsAroundId")
+                    .OnDelete(DeleteBehavior.Restrict);
+            });
+            planet.OwnsOne(p => p.Information);
+        });
     }
 }

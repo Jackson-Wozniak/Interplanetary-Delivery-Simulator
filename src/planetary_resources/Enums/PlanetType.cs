@@ -6,5 +6,6 @@ public enum PlanetType
     MINING,
     CHECKPOINT,
     RESOURCE_HUB,
-    MILITARY
+    MILITARY,
+    STAR
 }

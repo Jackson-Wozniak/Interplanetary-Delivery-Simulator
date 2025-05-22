@@ -1,4 +1,8 @@
-﻿namespace interplanetary_delivery_simulator.planetary_resources.Configuration;
+﻿using interplanetary_delivery_simulator.planetary_resources.Entities;
+using interplanetary_delivery_simulator.planetary_resources.Properties;
+using interplanetary_delivery_simulator.planetary_resources.Service;
+
+namespace interplanetary_delivery_simulator.planetary_resources.Configuration;
 
 public class PlanetConfiguration : IHostedService
 {
@@ -21,8 +25,10 @@ public class PlanetConfiguration : IHostedService
         return Task.CompletedTask;
     }
 
-    public void InitializePlanets()
+    private void InitializePlanets()
     {
-        
+        using var scope = _serviceProvider.CreateScope();
+        var planetService = scope.ServiceProvider.GetRequiredService<IPlanetService>();
+        planetService.AddDefaultPlanets(DefaultPlanets.AllPlanets());
     }
 }
